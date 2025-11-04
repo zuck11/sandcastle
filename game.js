@@ -92,6 +92,7 @@ class Game {
 
         this.setupCanvas();
         this.setupEventListeners();
+        this.setMode(MODE.PLACE_CASTLE); // Set initial mode and button state
         this.showInstructions();
     }
 
@@ -122,12 +123,23 @@ class Game {
         });
 
         document.getElementById('close-instructions-btn').addEventListener('click', () => {
-            document.getElementById('instructions').classList.add('hidden');
+            this.hideModal();
         });
     }
 
+    showModal(modalId) {
+        document.getElementById('modal-backdrop').classList.remove('hidden');
+        document.getElementById(modalId).classList.remove('hidden');
+    }
+
+    hideModal() {
+        document.getElementById('modal-backdrop').classList.add('hidden');
+        document.getElementById('instructions').classList.add('hidden');
+        document.getElementById('game-over').classList.add('hidden');
+    }
+
     showInstructions() {
-        document.getElementById('instructions').classList.remove('hidden');
+        this.showModal('instructions');
     }
 
     setMode(mode) {
@@ -136,7 +148,7 @@ class Game {
         // Update button states
         document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
 
-        if (mode === MODE.ADD_CASTLE) {
+        if (mode === MODE.ADD_CASTLE || mode === MODE.PLACE_CASTLE) {
             document.getElementById('add-castle-btn').classList.add('active');
         } else if (mode === MODE.ADD_DAM) {
             document.getElementById('add-dam-btn').classList.add('active');
@@ -399,11 +411,11 @@ class Game {
 
         const survivalTime = Math.floor((Date.now() - this.state.gameStartTime) / 1000);
         document.getElementById('survival-time').textContent = survivalTime;
-        document.getElementById('game-over').classList.remove('hidden');
+        this.showModal('game-over');
     }
 
     restart() {
-        document.getElementById('game-over').classList.add('hidden');
+        this.hideModal();
         this.state.reset();
         document.getElementById('castle-health').textContent = CASTLE_MAX_HITS;
         document.getElementById('wave-timer').textContent = WAVE_INTERVAL / 1000;

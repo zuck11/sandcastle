@@ -12,7 +12,7 @@
             <div id="menu">
                 <button id="add-castle-btn" class="menu-btn">Add Castle</button>
                 <button id="add-dam-btn" class="menu-btn">Add Dam</button>
-                <button id="normal-mode-btn" class="menu-btn active">Build Walls</button>
+                <button id="normal-mode-btn" class="menu-btn">Build Walls</button>
             </div>
             <div id="timer">
                 Next Wave: <span id="wave-timer">30</span>s
@@ -22,23 +22,27 @@
             </div>
         </div>
         <canvas id="game-canvas"></canvas>
-        <div id="game-over" class="hidden">
-            <h1>Game Over!</h1>
-            <p>Your sandcastle was destroyed by the waves!</p>
-            <p>You survived for <span id="survival-time">0</span> seconds</p>
-            <button id="restart-btn">Play Again</button>
-        </div>
-        <div id="instructions" class="hidden">
-            <h2>How to Play</h2>
-            <ul>
-                <li><strong>Place Castle:</strong> At the start, click to place your initial castle</li>
-                <li><strong>Build Walls:</strong> Click grid squares to build protective walls</li>
-                <li><strong>Add Castle:</strong> Click button, then click grid to add more castles</li>
-                <li><strong>Add Dam:</strong> Click button, then click a wall to create a water passage</li>
-                <li><strong>Survive:</strong> Protect your castle from waves for as long as possible!</li>
-            </ul>
-            <button id="close-instructions-btn">Start Game</button>
-        </div>
+    </div>
+
+    <div id="modal-backdrop" class="hidden"></div>
+
+    <div id="game-over" class="modal hidden">
+        <h1>Game Over!</h1>
+        <p>Your sandcastle was destroyed by the waves!</p>
+        <p>You survived for <span id="survival-time">0</span> seconds</p>
+        <button id="restart-btn">Play Again</button>
+    </div>
+
+    <div id="instructions" class="modal hidden">
+        <h2>How to Play</h2>
+        <ul>
+            <li><strong>Place Castle:</strong> At the start, click to place your initial castle</li>
+            <li><strong>Build Walls:</strong> Click grid squares to build protective walls</li>
+            <li><strong>Add Castle:</strong> Click button, then click grid to add more castles</li>
+            <li><strong>Add Dam:</strong> Click button, then click a wall to create a water passage</li>
+            <li><strong>Survive:</strong> Protect your castle from waves for as long as possible!</li>
+        </ul>
+        <button id="close-instructions-btn">Start Game</button>
     </div>
     <script src="game.js"></script>
 </body>

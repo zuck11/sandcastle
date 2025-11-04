@@ -85,8 +85,18 @@ body {
     cursor: crosshair;
 }
 
-#game-over {
-    position: absolute;
+#modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.modal {
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -96,6 +106,10 @@ body {
     box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
     text-align: center;
     z-index: 1000;
+}
+
+#game-over {
+    text-align: center;
 }
 
 #game-over h1 {
@@ -129,15 +143,6 @@ body {
 }
 
 #instructions {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 40px 60px;
-    border-radius: 15px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
     max-width: 600px;
 }
 
